@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#wrap{
+			margin:0 auto;
+			font-size: 0;
+			position: relative;
+		}
+		.content{
+			float: left;
+			width: 230px;
+		}
+		.box{
+			margin-left:10px;
+			margin-top: 10px;
+			border: 1px solid #ccc;
+			padding: 10px;
+		}
+		img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="content">
+			<div class="box"><img src="img/waterfall/1.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/2.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/3.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/4.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/5.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/6.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/7.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/8.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/9.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/10.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/11.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/12.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/13.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/14.jpg" alt=""></div>
+		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/15.jpg" alt=""></div>
+		</div>
+	</div>
+	<script src="jq/jquery-1.9.1.min.js"></script>
+	<script>
+		window.onload=function(){
+			var wrap=document.getElementById("wrap");
+			var content=wrap.getElementsByClassName("content");
+			var content_w=content[0].offsetWidth;
+			var client_w=document.body.clientWidth;
+			var cols=Math.floor(client_w/content_w);
+			wrap.style.cssText="width:"+content_w*cols+"px;margin:0 auto";
+			var cols_length=[];
+			for(var i=0;i<content.length;i++){
+				if(i<cols){
+					cols_length.push(content[i].offsetHeight);
+				}
+				else{
+					// var y_index=index_min(cols_length);
+					// content[i].style.cssText="position:absolute;top:"+y_index[0]+"px;left:"+y_index[1]*content_w+"px;";
+					// cols_length[y_index[1]]+=content[i].offsetHeight;
+					var y_index=index_min(cols_length);
+					cols_length[y_index[1]]=waterfall(cols_length,content,i,y_index);
+				}
+			}
+			var json_num=0;
+			window.onscroll=function(){
+			// wrap.onclick=function(){
+				var max=index_max(cols_length);
+				//被卷去的页面高度，加上当前页面视窗高度，大于或等于（应该都是等于）数组中最大长度时候就开始加载图片
+				if(document.body.scrollTop+document.documentElement.clientHeight>=max){
+					var new_content=[];
+					var new_box=[];
+					var new_img=[];
+					var jsonText=$.ajax({
+						url:"waterfall.json",
+						dataType:"json",
+						async:true,
+						type:"GET"
+					})
+					for(var a=0;a<10;a++){
+						new_content[a]=document.createElement("div");
+						new_box[a]=document.createElement("div");
+						new_img[a]=document.createElement("img");
+						new_img[a].setAttribute("src","img/waterfall/15.jpg");
+						new_box[a].appendChild(new_img[a]);
+						new_box[a].setAttribute("class","box");
+						new_content[a].appendChild(new_box[a]);
+						// new_content[a].innerHTML="<div class='box'><img src='img/waterfall/25.jpg' alt=''></div>";     
+						//这行代码也可以用上面的代替，但这只是一个content，不是数组
+						new_content[a].setAttribute("class","content");			
+						wrap.appendChild(new_content[a]);
+						y_index=index_min(cols_length);
+						cols_length[y_index[1]]=waterfall(cols_length,new_content,a,y_index);
+					}
+				}
+
+			}
+
+			//获取数组中最小的数还有该数的索引
+			function index_min(array1){
+				var flag=0;
+				var index=0;
+				for(var j=0;j<array1.length;j++){
+					if(j==0){
+						flag=array1[j];
+					}
+					else if(array1[j]<flag){
+						flag=array1[j];
+						index=j;
+					}
+				}
+				var array_re=[flag,index];
+				return	array_re;
+			}
+
+			//获取数组中最大的数
+			function index_max(array2){
+				var flag=0;
+				for(var j=0;j<array2.length;j++){
+					if(j==0){
+						flag=array2[j];
+					}
+					else if(array2[j]>flag){
+						flag=array2[j];
+					}
+				}
+				return flag;
+			}
+
+			//瀑布流定位实现
+			function waterfall(array3,array4,k,index){
+				array4[k].style.cssText="position:absolute;top:"+index[0]+"px;left:"+index[1]*content_w+"px;";
+				// console.log("图片高度"+array4[k].offsetHeight);			//这里出错，不是32高度
+				array3[index[1]]+=array4[k].offsetHeight;
+				// console.log("最短数组长度"+array3[index[1]]);
+				return array3[index[1]];
+			}
+
+			// //json数据产生，在这里不适用
+			// function jsonText(order){
+			// 	var text="[{'src':'img/waterfall/"+eval(order*10+6)+".jpg'},{'src':'img/waterfall/"+eval(order*10+7)+".jpg'},{'src':'img/waterfall/"+eval(order*10+8)+".jpg'},{'src':'img/waterfall/"+eval(order*10+9)+".jpg'},{'src':'img/waterfall/"+eval(order*10+10)+".jpg'},{'src':'img/waterfall/"+eval(order*10+11)+".jpg'},{'src':'img/waterfall/"+eval(order*10+12)+".jpg'},{'src':'img/waterfall/"+eval(order*10+13)+".jpg'},{'src':'img/waterfall/"+eval(order*10+14)+".jpg'},{'src':'img/waterfall/"+eval(order*10+15)+".jpg'}]";
+			// 	return text;
+			// }
+			
+		}
+	</script>
+</body>
+</html>
