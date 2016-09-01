@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<!-- 轮播图就是设置好窗口的大小，然后不断处理溢出的情况 -->
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#wrap{
+			height: 480px;			
+			width: 640px;
+			/*设置包裹层显示的窗口大小，轮播图在这中间显示*/
+			margin: 0 auto;
+			overflow: hidden;
+			/*将溢出的部分隐藏*/
+			margin-top: 20px;
+			position: relative;
+			/*因为轮播图向左运动，运动需要先设置position*/
+		}
+		#imgSlider{
+			position: absolute;
+			width: 3200px;
+			/*这里注意，因为很多图片向左浮动堆在一起，需要设置好全部图片的宽度，不然会向下堆积，轮播图需要在同一行显示*/
+			cursor: pointer;
+		}
+		#imgSlider img{
+			float: left;
+			height: 480px;
+			width: 640px;
+		}
+		#iconSlider{
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left:-50px;
+		}
+		#iconSlider li{
+			list-style: none;
+			float: left;
+			height: 10px;
+			width: 10px;
+			margin: 5px;
+			border:1px solid #F4E3E3;
+			border-radius: 6px;
+			/*制作圆形小标志*/
+			cursor: pointer;
+		}
+		#arrowl{
+			z-index: 10;
+			position: absolute;
+			top: 50%;
+			left: 20px;
+			margin-top: -18px;
+			cursor: pointer;
+		}
+		#arrowr{
+			z-index: 10;
+			position: absolute;
+			top: 50%;
+			right: 20px;
+			margin-top: -18px;
+			cursor: pointer;
+		}
+	</style>
+	<!-- <script type="text/javascript" src="jq/jquery-1.9.1.js"></script> -->
+	<!-- <script type="text/javascript" src="js/index53.js"></script> -->
+	<script>
+		window.onload=function(){
+			var wrap=document.getElementById("wrap");
+			var imgSlider=document.getElementById("imgSlider");
+			var iconSlider=document.getElementById("iconSlider");
+			var arrowr=document.getElementById("arrowr");
+			var arrowl=document.getElementById("arrowl");
+			var firstChild=document.getElementById("firstChild");
+			var imgBe=document.createElement("img");
+			var imgAf=document.createElement("img");
+			var li=iconSlider.getElementsByTagName("li");
+			imgSlider.style.width="4480px";
+			imgBe.src="img/轮播图/05.jpg";
+			imgAf.src="img/轮播图/01.jpg";
+			imgSlider.insertBefore(imgBe,firstChild);
+			imgSlider.appendChild(imgAf);
+			var indexPre=0;
+			imgSlider.style.left="-640px";
+			arrowr.onclick=function(){
+				// clearInterval(timer);
+				if(imgSlider.offsetLeft%640!=0){
+						return;
+					}
+				if(imgSlider.offsetLeft=="-3840"){
+					imgSlider.style.left="-640px";
+				}
+				var timer=setInterval(function(){
+					imgSlider.style.left=imgSlider.offsetLeft-10+"px";
+					if(imgSlider.offsetLeft%640==0){
+						clearInterval(timer);
+					}
+				},10)
+				// indexPre=imgSlider.offsetLeft/(-640);
+				if(indexPre==4){
+					indexPre=0;
+				}
+				else{
+					indexPre++;
+				}
+				for(var i=0;i<li.length;i++){
+					li[i].style.backgroundColor="";
+				}
+				li[indexPre].style.backgroundColor="#E0D2D2";
+			}
+			arrowl.onclick=function(){
+				// clearInterval(timer);
+				if(imgSlider.offsetLeft%640!=0){
+						return;
+					}
+				if(imgSlider.offsetLeft=="0"){
+					imgSlider.style.left="-3200px";
+				}
+				var timer=setInterval(function(){
+					imgSlider.style.left=imgSlider.offsetLeft+10+"px";
+					if(imgSlider.offsetLeft%640==0){
+						clearInterval(timer);
+					}
+				},10)
+				// indexPre=imgSlider.offsetLeft/(-640);
+				if(indexPre==0){
+					indexPre=4;
+				}
+				else{
+					indexPre--;
+				}
+				for(var i=0;i<li.length;i++){
+					li[i].style.backgroundColor="";
+				}
+				li[indexPre].style.backgroundColor="#E0D2D2";
+			}
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[indexPre].style.backgroundColor="#E0D2D2";
+				li[i].onclick=function(){
+					imgSlider.style.left=(this.index+1)*(-640)+"px";
+					for(var j=0;j<li.length;j++){
+						li[j].style.backgroundColor="";
+					}
+					this.style.backgroundColor="#E0D2D2";
+					// var timer=setInterval(function(){
+					// 	var indexPre=parseInt(imgSlider.offsetLeft/(-640));
+					// 	if(indexPre<this.index){
+					// 		imgSlider.style.left=imgSlider.offsetLeft-10+"px";
+					// 	}
+					// 	else if(indexPre>this.this){
+					// 		imgSlider.style.left=imgSlider.offsetLeft+10+"px";
+					// 	}
+					// 	if(imgSlider.offsetLeft==640*this.index){
+					// 		clearInterval(timer);
+					// 		}
+					// },10)
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="imgSlider">
+			<img src="../img/轮播图/01.jpg" alt="" id="firstChild">
+			<img src="../img/轮播图/02.jpg" alt="">
+			<img src="../img/轮播图/03.jpg" alt="">
+			<img src="../img/轮播图/04.jpg" alt="">
+			<img src="../img/轮播图/05.jpg" alt="">
+		</div>
+		<ul id="iconSlider">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<img src="../img/轮播图/arrowl.png" alt="" id="arrowl">
+		<img src="../img/轮播图/arrowr.png" alt="" id="arrowr">
+	</div>
+</body>
+</html>
