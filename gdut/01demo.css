@@ -1,0 +1,105 @@
+.html{
+	margin:0;
+	padding: 0;
+}
+.logo{
+	position: relative;
+	padding: 0px 150px;
+	border-top: 2px solid rgb(154,0,0);
+	background-color: rgb(253,253,253);
+}
+.logo .other{
+	height: 98px;
+	position: absolute;
+	right: 180px;
+	top:0px;
+	line-height: 98px;
+	word-spacing: 20px;
+	font-size: 10px;
+	font-family: "微软雅黑";
+}
+.nav li{
+	/*为什么换成a块状之后变化了？*/
+	text-align: center;
+	list-style: none;
+	text-decoration: none;
+	width: 95px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	font-size: 17px;
+	position: relative;
+}
+.nav li a{
+	display: block;
+	color: white;
+	width: 100px;
+	/*定宽的这个宽度指的是什么*/
+	font-family: "微软雅黑";
+}
+.nav ul{
+	width: 1100px;
+	margin: 0 auto;
+}
+.nav{
+	width: 100%;
+	overflow: hidden;
+	background-color: rgb(154,0,0);
+	/*为什么块状还是不能用matgin:0 auto 来居中？*/
+}
+
+/*为什么logo和导航栏图片不能完全贴边*/
+a{
+	text-decoration: none;
+	color: black;
+}
+.nav li a:hover{
+	color: #EE6F0A;
+}
+.up,.down{
+	width: 1080px;
+	margin: 0 auto;
+	overflow: auto;
+}
+h3{
+	font-size: 18px;
+	font-weight: normal;
+}
+.up .news ul li,.up .revo ul li,.down .thec ul li,.down .kno ul li{
+	font-size: 14px;
+	font-weight: lighter;
+	margin: 10px 0;
+}
+.up .news,.up .revo,.up .spec,.down .thec,.down .kno,.down .chal{
+	float:left;
+	width: 300px;
+	padding: 0 30px;
+	position: relative;
+}
+.up .news span,.up .revo span,.up .spec span,.down .thec span,.down .kno span,.down .chal span{
+	position: absolute;
+	right: 30px;
+	top:20px;
+	font-size: 13px;
+}
+.up .spec img,.down .chal img{
+	position: absolute;
+	right:60px;
+	top:90px;
+}
+.foot{
+	text-align: center;
+	font-size: 13px;
+	background-color: rgb(154,0,0);
+	font-family: "微软雅黑";
+	height: 40px;
+	color: white;
+	line-height: 40px;
+	word-spacing: 30px;
+	margin-top: 10px;
+}
+body{
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+}

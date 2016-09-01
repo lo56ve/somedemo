@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广工主页</title>
+	<link rel="stylesheet" href="01demo.css" type="text/css">
+	<style>
+		#login h2{
+			text-indent: 50px;
+		}
+		#login{
+			height: 350px;
+			width: 350px;
+			position: fixed;
+			background-color: #EAE6E6;
+			box-shadow: 2px 2px 10px #6B6060;
+			top: 400px;
+			left: 400px;
+			z-index: 10;
+		}
+		.input{
+			height: 40px;
+			width: 280px;
+			margin: 20px 35px;
+			padding-left: 10px;
+			box-sizing: border-box;
+		}
+		#mask{
+			opacity: 0.7;
+			filter: alpha(opacity:70);
+			background-color: #484545;
+			position: absolute;
+			top: 0px;
+			left:0px;
+			z-index: 9px;
+		}
+		#close{
+			position: absolute;
+			right: 5px;
+			top: 5px;
+		}
+	</style>
+	<script type="text/javascript" src="01demo.js"></script>
+</head>
+<body onselectatart='return false;'>
+	<div class="logo"><img src="广工图标.jpg" alt="广东工业大学" title="广工"><div class="other"><a href="#">旧版主页</a> <a href="#">English</a> <a href="">期杆投稿</a> <a href="#" id='loginin'>登录</a></div></div>
+	<div class="nav">
+		<ul>
+			<li><a href="#" class="first">首页</a></li>
+			<li><a href="#">学校概况</a></li>
+			<li><a href="#">新闻通知</a></li>
+			<li><a href="#">招生就业</a></li>
+			<li><a href="#">教学工作</a></li>
+			<li><a href="#">科学研究</a></li>
+			<li><a href="#">图书馆</a></li>
+			<li><a href="#">招标招聘</a></li>
+			<li><a href="#">校园文化</a></li>
+			<li><a href="#">办公查询</a></li>
+			<li><a href="#">公共服务</a></li>
+		</ul>
+	</div>
+	<div><img src="校门.jpg" alt="校门背景图" style="width: 100%;"></div>
+	<div class="up">
+		<div class="news">
+			<h3>学校新闻</h3>
+			<hr>
+			<ul>
+				<li><a href="#">学校新学期工作会议召开：树立“</a></li>
+				<li><a href="#">省教育厅来我校调研高水平建设工作</a></li>
+				<li><a href="#">惠州市长麦教猛莅临 我校惠州研究院调研</a></li>
+				<li><a href="#">谭蓉娟教授获国家社科基金重点项目立</a></li>
+				<li><a href="#">【广东电视台】广东工业大学：搭建科</a></li>
+				<li><a href="#">举办2016届毕业生校园专场招聘会</a></li>
+				<span><a href="#">进入新闻网</a></span>
+			</ul>
+		</div>
+		<div class="revo">
+			<h3>教学改革</h3>
+			<hr>
+			<ul>
+				<li><a href="#">我校获批新增7个本科专业</a></li>
+				<li><a href="#">我校物联网工程新专业获评全国排名第</a></li>
+				<li><a href="#">机器人学院师生开学前“练兵”</a></li>
+				<li><a href="#">学校召开工程教育专业认证申报准备会</a></li>
+				<li><a href="#">教务处举办“工程教育专业认证与OBE</a></li>
+				<li><a href="#">学校举办2015年本科教学工作会议</a></li>
+				<span><a href="#">更多</a></span>
+			</ul>
+		</div>
+		<div class="spec">
+			<h3>校内专题</h3>
+			<hr>
+			<<a href="#"><img src="专题.jpg" alt="专题" title="我校召开新学期科研工作会议"></a>
+			<span><a href="#">更多</a></span>
+		</div>
+	</div>
+	<div class="down">
+		<div class="thec">
+			<h3>媒体工大</h3>
+			<hr>
+			<ul>
+				<li><a href="#">中国日报|切实服务创新驱动发展战略</a></li>
+				<li><a href="#">南方网|广东省高等教育服务地方经济</a></li>
+				<li><a href="#">新华网|教育部举办发布会介绍广东省</a></li>
+				<li><a href="#">南方日报|教育宝宝举办专题新闻发布会</a></li>
+				<li><a href="#">南方日报|坚持正确导向 不辱职责使命</a></li>
+				<li><a href="#">科技日报|高校科研成果 如何“造血</a></li>
+				<span><a href="#">更多</a></span>
+			</ul>
+		</div>
+		<div class="kno">
+			<h3>科研学术</h3>
+			<hr>
+			<ul>
+				<li><a href="#">我校首次获得国家社科基金重点项目立项</a></li>
+				<li><a href="#">校长陈新一行赴省经信委座谈交流</a></li>
+				<li><a href="#">我校与番禺大石街大力推进校-街”1对</a></li>
+				<li><a href="#">校长陈新访问航天系统院等 单位共推军</a></li>
+				<li><a href="#">我校召开新学期科研工作会议</a></li>
+				<li><a href="#">我校团队成果获得2015年广东省科技</a></li>
+				<span><a href="#">更多</a></span>
+			</ul>
+		</div>
+		<div class="chal">
+			<h3>承办挑战杯</h3>
+			<hr>
+			<a href="#"><img src="挑战杯.jpg" alt="挑战杯" title="第十四届“挑战杯国赛视频”"></a>
+			<span><a href="#">更多</a></span>
+		</div>
+	</div>
+	<div class="foot">www.gdut.edu.cn 粤ICP备05008833号 广州市番禺区广州大学城外环西路100号（510006） webmaster</div>
+</body>
+</html>
