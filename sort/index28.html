@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	function bubbleSort(arr){
+		var temp;
+		var exchange;
+		for(var i=0;i<arr.length;i++){
+				exchange=false;
+				for(var j=arr.length-2;j>=i;j--){
+					if(eval(arr[j+1])>eval(arr[j])){
+						temp=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=temp;
+						exchange=true;
+					}
+				}
+				if(!exchange){			//如果exchange为false，就不用排序，则跳出循环
+					break;
+				}
+		}
+		return arr;
+	}
+	function display(){
+		str=document.getElementById('source').value;
+		strs=bubbleSort(str.split(','));
+		str="";
+		for(var i=0;i<strs.length;i++){
+			str+=strs[i]+',';
+		}
+		alert(str);
+	}
+	function bubble(arr){
+		var temp1;
+		var flag;
+		for(var a=0;a<arr.length;a++){
+			flag=true;
+			for(var b=arr.length-2;b>=a;b--){
+				if(eval(arr[b+1])<eval(arr[b])){
+					temp1=arr[b+1];
+					arr[b+1]=arr[b];
+					arr[b]=temp1;
+					flag=false;
+				}
+			}
+			if(flag){
+				break;
+			}
+		}
+		return	arr;
+	}
+	function sort(){
+		str1=document.getElementById('sort').value;
+		str2=bubble(str1.split(','));
+		str1='';
+		for(var a=0;a<str2.length;a++){
+			str1+=str2[a]+',';
+		}
+		alert(str1);
+	}
+	</script>
+</head>
+<body>
+	<div><input type="text" id="source">
+		<input type="button" value="降序" onclick="display()">
+		<input type="text" id="sort">
+		<input type="button" value="升序" onclick="sort()">
+	</div>
+</body>
+</html>
