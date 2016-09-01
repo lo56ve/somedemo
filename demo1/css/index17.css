@@ -1,0 +1,179 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	font-weight: 100;
+}
+body{
+	background-color: #DED6D6;
+
+}
+.nav{
+	position: fixed;
+	top: 0px;
+	height: 70px;
+	background-color: white;
+	width: 100%;
+	border: 1px solid #CBC7C7;
+	z-index: 1;
+}
+.nav ul li{
+	float: left;
+	width: 25%;
+	padding: 10px;
+	box-sizing: border-box;
+	list-style: none;
+}
+.nav nav a{
+	text-decoration: none;
+	color: black;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	display: block;
+	text-align: center;
+}
+.nav nav li:first-child a{
+	border: 1px solid #6D6969;
+}
+.home1{
+	height: 370px;
+	/*width: 55%;*/
+	width: 750px;
+	margin: 0 auto;
+	margin-top:190px;
+	margin-bottom:30px;
+	background-color: white;
+	padding: 30px;
+	box-sizing: border-box;
+}
+.home2{
+	text-align: center;
+	height: 310px;
+	border: 1px solid #A7A2A2;
+}
+.home3{
+	display: table;
+	width: 100%;
+	height: 100%;
+	padding: auto 30%;
+}
+.home4{
+	display: table-cell;
+	vertical-align: middle;
+}
+.home4 .top{
+	font-size: 3em;
+}
+.home4 .bottom{
+	font-size: 1.5em;
+}
+.ourteam{
+	/*width: 55%;*/
+	width: 750px;
+	margin: 0 auto;
+	background-color: white;
+	position: relative;
+	height: 375px;
+}
+.left{
+	padding: 50px;
+	font-size: 2em;
+	margin-right: 250px;
+}
+.ourteam img{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 250px;
+}
+.ideas{
+	/*width: 55%;*/
+	width: 750px;
+	background-color: white;
+	margin: 0 auto;
+	margin-top: 30px;
+	font-size: 0;
+}
+.ideas div{
+	width: 33.33%;
+	height: 250px;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 250px;
+}
+.ideas div p{
+	font-size: 2em;
+	text-align: center;
+}
+.our{
+	height: 275px;
+	width: 750px;
+	padding: 60px 55px;
+	background-color: white;
+	box-sizing: border-box;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.our h3{
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.our p{
+	text-align: center;
+}
+.ourclients,.ourprojects{
+	display: none;
+}
+.contact{
+	width: 750px;
+	background-color: white;
+	margin: 0 auto;
+}
+.form{
+	padding: 55px 50px;
+	overflow: auto;
+
+}
+.form p{
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+.form .name{
+	width: 320px;
+	height: 38px;
+	float: left;
+	margin-right: 10px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 8px;
+}
+.form .email{
+	width: 320px;
+	height: 38px;
+	float: left;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 8px;
+}
+.form .subject{
+	width: 650px;
+	height: 38px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	padding: 8px;
+}
+.form textarea{
+	padding: 8px;
+}
+.submit{
+	float: right;
+	height: 65px;
+	width: 195px;
+	margin-top: 10px;
+	background-color: white;
+	border: 1px solid #8F8686;
+}
