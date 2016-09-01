@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>move</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.warp{
+			width: 500px;
+			height: 100px;
+		}
+		ul{
+			list-style: none;
+		}
+		li{
+			height: 100px;
+			width: 100px;
+			box-sizing: border-box;
+			float: left;
+			padding: 10px;
+			background-color: #A39D9D;
+		}
+		.cell{
+			background-color: white;
+			height: 80px;
+			width: 80px;
+		}
+		p{
+			margin-top: 25px;
+			text-align: center;
+		}
+		img{
+			position: relative;
+			top: 25px;
+			left: 26px;
+			opacity: 1;
+		}
+	</style>
+	<script src="js/perfect.js"></script>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var pic=document.getElementsByClassName("pic");
+			for(var i=0;i<pic.length;i++){
+				pic[i].onmouseover=function(){
+					var _this=this;
+					startMove(_this,{top:-30,opacity:0},function(){
+						_this.style.top="35px";
+						startMove(_this,{top:25,opacity:100});
+					});
+				}
+			}	
+		}
+
+		// window.onload=function(){
+		// 	var pic=document.getElementsByClassName("pic");
+		// 	for(var i=0;i<pic.length;i++){
+		// 		pic[i].onmouseover=function(){
+		// 			startMove(this,{top:-30,opacity:0},function(){
+		// 				this.style.top="35px";
+		// 				startMove(this,{top:25,opacity:100});
+		// 			});
+		// 		}
+		// 	}	
+		// }
+
+	</script>
+
+
+	</script>
+
+
+
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li><div class="cell"><img src="img/icons/1.png" alt="" class="pic"><p>手机</p></div></li>
+			<li><div class="cell"><img src="img/icons/2.png" alt="" class="pic"><p>手表</p></div></li>
+			<li><div class="cell"><img src="img/icons/3.png" alt="" class="pic"><p>礼物</p></div></li>
+			<li><div class="cell"><img src="img/icons/4.png" alt="" class="pic"><p>备注</p></div></li>
+			<li><div class="cell"><img src="img/icons/5.png" alt="" class="pic"><p>地图</p></div></li>
+		</ul>
+	</div>
+</body>
+</html>
