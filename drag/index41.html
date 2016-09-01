@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出窗</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		button{
+			position: absolute;
+			left: 40px;
+			top: 40px;
+		}
+		#text{
+			width: 300px;
+			height: 300px;
+			border-radius: 20px;
+			background-color: #F40E0E;
+			line-height: 300px;
+			text-align: center;
+			/*position: absolute;
+			top: 150px;
+			left: 400px;*/
+			opacity: 0.5;
+			filter: alpha(opacity:50);
+			z-index:10;
+			box-shadow: 3px 3px 4px #5E3434;
+			display: none;
+		}
+		span{
+			z-index: 11;
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var body=document.getElementsByTagName('body')[0];
+			var cHeight=document.documentElement.clientHeight;
+			var cWidth=document.documentElement.clientWidth;
+			var btn=document.getElementById('btn');
+			var mask=document.createElement('div');
+			var text=document.getElementById('text');
+			var w=text.clientWidth;						//获取弹出框的宽度
+			var h=text.clientHeight;					//获取弹出窗的长度
+			mask.style.height=cHeight+'px';
+			mask.style.backgroundColor="#8D8383";
+			mask.style.width=cWidth+'px';
+			mask.style.opacity="0.7";
+			mask.style.filter="alpha(opacity:70)";
+			btn.onclick=function(){
+				body.appendChild(mask);					//添加遮罩层
+				text.style.display='block';				//显示弹出框
+			}
+			var moveX=0;			//在水平轴上面移动距离
+			var moveY=0;			//在竖直轴上
+			var moveTop=0;			//弹出框的上边距
+			var moveLeft=0;			//弹出窗的左边距
+			var moveable=false;		//如果鼠标点击了，为true，鼠标弹起了，为flase
+			text.onmousedown=function(){		//鼠标按下触发函数
+				var evt=getEvent();		//获取点击触发的事件
+				moveable=true;
+				moveX=evt.clientX;		//clientX是鼠标距离左边距
+				moveY=evt.clientY;		//clientY是鼠标距离上边距
+				// moveTop=parseInt(text.offsetTop);		//如果left和top写在css中，获取元素的上边距就需要用offsetTop
+				// moveLeft=parseInt(text.offsetLeft);
+				moveTop=parseInt(text.style.top);			//如果left和top是写在html中，获取元素的上边距就可以用style.top
+				moveLeft=parseInt(text.style.left);
+				console.log(moveTop);
+				document.onmousemove=function(){	//鼠标移动触发函数，必须是在鼠标按下的函数里面
+				if(moveable){
+					var evt=getEvent();
+					var x=moveLeft+evt.clientX-moveX;		//鼠标的新位置减去原来的位置，加上弹出框原来的位置，就是弹出框新的位置
+					var y=moveTop+evt.clientY-moveY;
+					if(x>0 &&(x+w<cWidth) && y>0 && (y+h<cHeight)){		//如果不超出边界
+						text.style.left=x+'px';
+						text.style.top=y+'px';
+					}
+				}
+			}
+				document.onmouseup=function(){		//鼠标弹起触发的函数
+					if(moveable){
+						moveable=false;		//将移动的数值清零
+						moveX=0;
+						moveY=0;
+						moveTop=0;
+						moveLeft=0;
+					}
+				}
+			}
+			
+			function getEvent(){
+				return window.event || arguments.callee.caller.arguments[0];		//在ie和firefox下获取事件，arguments.callee是指向arguments对象的函数，argument.callee.caller是引用该函数	caller是属性。不是方法
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">弹出窗</button>
+	<div id="text" style="position: absolute; left: 100px; top: 200px;"><span>内容</span></div>			<!-- left写在html中 -->
+
+</body>
+</html>
