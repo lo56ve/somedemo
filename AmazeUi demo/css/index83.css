@@ -1,0 +1,86 @@
+body,html{
+	height:100%;
+	overflow: hidden;
+}
+.nav-right{
+	float: right;
+	margin-right: 10px;
+	font-size: 14px;
+}
+.content{
+	position:relative;
+	height:100%;
+}
+.right-bar{
+	margin-left: 260px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height:92%;
+}
+.left-bar{
+	width: 260px;
+	background-color: rgb(243,243,243);
+	position:absolute;
+	top:0;
+	left:0;
+	height:92%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.mypanel{
+	margin:10px;
+}
+.left-bar-ul{
+	margin:0;
+}
+#user-nav{
+	padding-left: 25px;
+	background-color: rgb(243,243,243);
+}
+.right-bar-list{
+	border: 1px solid #ccc;
+	margin-top:0;
+	margin-bottom:0;
+}
+.right-bar-table{
+	margin-top: 0;
+}
+.right-bar-list-p{
+	margin-top:0;
+	margin-bottom:0;
+}
+.right-bar-list-icon{
+	border-right:1px solid #ccc;
+}
+.right-bar-panel-list li:first-child{
+	border-top:0;
+}
+.right-bar-panel-list li:last-child{
+	border-bottom: 0;
+}
+.right-bar-panel-list h3,p{
+	margin:0;
+}
+.right-bar-panel-list-progress,.right-bar-panel-list{
+	margin:0;
+}
+.browser-table{
+	padding:0;
+}
+.browser-table tr{
+	text-indent: 40px;
+}
+.grey{
+	color:#ADACAC;
+}
+#comment-pagination li a{
+	line-height: 0.8;
+	padding:0.5em 0.5em;
+}
+#footer p{
+	color:#BCBBBB;
+	font-size:1.3rem;
+}
+.icon-yellow{
+	color:#F1C212;
+}
