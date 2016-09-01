@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时钟倒影</title>
+	<style>
+		#up{
+			height: 50px;
+			width: 200px;
+			margin: 0 auto;
+			font-size: 45px;
+			font-weight: bold;
+			text-align: center;
+		}
+		#down{
+			height: 50px;
+			width: 200px;
+			margin: 0 auto;
+			font-size: 45px;
+			text-align: center;
+			font-style: italic;
+			filter: alpha(opacity:20);
+			opacity: 0.2;
+			-webkit-transform:scale(1,-1);
+			transform: scale(1,-1);
+		}
+		hr{
+			width: 200px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			function newtime(){
+				var tim=new Date();
+				var hour=tim.getHours();
+				var minute=tim.getMinutes();
+				var second=tim.getSeconds();
+				var up=document.getElementById('up');
+				var down=document.getElementById('down');
+				down.innerHTML=hour+':'+minute+':'+second;
+				up.innerHTML=hour+':'+minute+':'+second;
+			}
+			timer=setInterval(newtime,500);
+		}
+	</script>
+</head>
+<body>
+	<div id="up"></div>
+	<hr>
+	<div id="down"></div>
+</body>
+</html>
