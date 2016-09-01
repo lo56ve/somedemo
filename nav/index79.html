@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地狗购物</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			list-style: none;
+		}
+		#wrap{
+			width: 800px;
+			padding-top: 15px;
+			margin:0 auto;
+			position: relative;
+		}
+		h2{
+			color: rgb(0,150,210);
+			margin: 10px 0;
+		}
+		h4{
+			padding-bottom: 5px;
+			border-bottom: 2px solid rgb(0,150,210);
+		}
+		.content{
+			width: 100%;
+			padding: 20px;
+			border: 1px dotted blue;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+		img{
+			width: 230px;
+			height: 230px;
+			margin: 5px;
+		}
+		.nav{
+			width: 80px;
+			display: inline-block;
+			position: fixed;
+			left: 1075px;
+			top: 200px;
+		}
+		.nav li{
+			margin-top:5px;
+		}
+		.nav li a{
+			display: inline-block;
+			width: 80px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			font-weight: bold;
+			cursor: pointer;
+			text-decoration: none;
+		}
+		.active{
+			color: white;
+			background-color: rgb(0,150,210);
+		}
+		.nav li a:hover{
+			color: white;
+			background-color: rgb(0,150,210);
+		}
+		.normal{
+			color: black;
+			background-color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<h2>地狗购物网</h2>
+		<ul class="content" id="1F">
+			<li>
+				<h4>1F 男装</h4>
+				<div>
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+					<img src="img/地狗/1F.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+		<ul class="content" id="2F">
+			<li>
+				<h4>2F 女装</h4>
+				<div>
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+					<img src="img/地狗/2F.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+		<ul class="content" id="3F">
+			<li>
+				<h4>3F 美妆</h4>
+				<div>
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+					<img src="img/地狗/3F.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+		<ul class="content" id="4F">
+			<li>
+				<h4>4F 数码</h4>
+				<div>
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+					<img src="img/地狗/4F.png" alt="">
+				</div>
+			</li>
+		</ul>
+		<ul class="content" id="5F">
+			<li>
+				<h4>5F 母婴</h4>
+				<div>
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+					<img src="img/地狗/5F.jpg" alt="">
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<ul id="nav_ul">
+			<li><a href="#1F" class="active">1F 男装</a></li>
+			<li><a href="#2F" class="normal">2F 女装</a></li>
+			<li><a href="#3F" class="normal">3F 美妆</a></li>
+			<li><a href="#4F" class="normal">4F 数码</a></li>
+			<li><a href="#5F" class="normal">5F 母婴</a></li>
+		</ul>
+	</div>
+
+	<!-- js -->
+<!-- 	<script>
+		window.onload=function(){
+			var wrap=document.getElementById("wrap");
+			var content=wrap.getElementsByClassName("content");
+			var nav=document.getElementsByClassName("nav")[0];
+			var li=nav.getElementsByTagName("li");
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onclick=function(){
+					for(var j=0;j<li.length;j++){
+						li[j].firstChild.className="normal";
+					}
+					this.firstChild.className="active";
+				}
+			}
+			setInterval(function(){
+				for(var k=0;k<content.length;k++){
+					if(document.body.scrollTop<content[k].offsetTop+450){
+						for(var a=0;a<li.length;a++){
+							li[a].firstChild.className="normal";
+						}
+						li[k].firstChild.className="active";	
+						//当滚动页面所在的高度（即视窗上边沿距离页面顶部的距离）小于content[k]的距离页面上边的距离+400（也就是页面中间）时，就触发事件，用了for循环，从k为0开始比较距离，如果k小的满足了距离条件就触发事件并return跳出for循环，不再判断之后k更大的数，同时如果太小的k不满足就进不了if语句，由于获取的滚动页面所在高度只能获取一次，所以需要在外面添加一个定时器，不断循环
+						return;
+					}
+				}
+			},300);
+		}
+	</script> -->
+
+	<!-- jq -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			$(window).scroll(function(){
+				var $content=$(".content");
+				var $current=$(document).scrollTop();
+				var $a=$("#nav_ul").find("a");
+				$content.each(function(index){
+					if(($content.eq(index).offset().top)-400<=$current){
+						$content.each(function(index){
+							$a.eq(index).removeClass("active").removeClass("normal");
+						})
+						$a.eq(index).addClass("active");
+					}
+					else{
+						return false;
+					}
+				})
+			})
+		})
+	</script>
+</body>
+</html>
