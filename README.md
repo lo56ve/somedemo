@@ -4,6 +4,7 @@
 - demo1（模仿的小网站）
 - move frame（用js运动框架，模仿淘宝图标运动特效）
 - bootstrap demo（bootstrap模仿后台管理页面）
+- AmazeUi demo（amazeUI模仿后台管理页面）
 - comment（模仿人人网评论功能）
 - drap（js，jq实现div可拖动）
 - joke（开个玩笑）
