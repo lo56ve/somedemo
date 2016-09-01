@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>请确认</title>
+	<style>
+		.cannel{
+			height: 200px;
+			width: 400px;
+			background:linear-gradient(180deg,#95D3FB 0%,#2B54C8 100%);
+			-webkit-border-radius:5px;
+			-moz-border-radius:5px;
+			border-radius:5px;
+			-webkit-box-shadow:0px 3px 5px #7C6B6B;
+			-moz-box-shadow:0px 3px 5px #7C6B6B;
+			box-shadow:0px 3px 5px #7C6B6B;
+			padding: 10px;
+			box-sizing: border-box;
+			margin:0 auto;
+			margin-top: 30px;
+			position: relative;
+		}
+		p{
+			text-align: center;
+			padding-top: 5px;
+		}
+		#close{
+			position: absolute;
+			right: 10px;
+			top: 5px;
+		}
+		button{
+			cursor: pointer;
+		}
+		#btn2{
+			position: absolute;
+			right: 20px;
+			top: 169px;
+		}
+		#btn1{
+			position: absolute;
+			right: 90px;
+			bottom: 10px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var close=document.getElementById("close");
+			var timer=null;
+			function startMove(dis){
+				if(btn2.offsetTop!=dis){
+					timer=setInterval(function(){
+						if(btn2.offsetTop==dis){
+							clearInterval(timer);
+						}
+						else if(dis==130){
+							btn2.style.top=btn2.offsetTop-1+"px";
+						}
+						else{
+							btn2.style.top=btn2.offsetTop+1+"px";
+						}
+					},15)
+				}
+			}
+			btn2.onmouseover=function(){
+				if(btn2.offsetTop==169){
+					startMove(130);
+				}
+				else if(btn2.offsetTop==130){
+					startMove(169);
+				}
+			}
+			function down(e){
+				if(e.innerHTML=="不是"){
+					// console.log(e.innerHTML);
+					e.innerHTML="我是";
+					if(e==btn2){
+						btn1.innerHTML="不是";
+					}
+					else{
+						btn2.innerHTML="不是";
+					}
+				}
+				else{
+					alert("嗯，的确挺逗的！");
+				}
+			}
+			btn2.onmousedown=function(){
+				down(this);
+			}
+			btn1.onmousedown=function(){
+				down(this);
+			}
+			close.onclick=function(){
+				alert("关闭也没有办法改变你逗逼的事实！")
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="cannel">
+		<h3>这是一道自我描述题</h3>
+		<p>请问你是逗逼吗？（诚实回答！）</p>
+		<button id="btn1">我是</button><button id="btn2">不是</button>
+		<button id="close">X</button>
+	</div>
+</body>
+</html>
