@@ -12,3 +12,4 @@
 - sort（js实现升序和降序排序）
 - time inverted（时钟倒影）
 - waterfall（js实现瀑布流，ajax加载）
+- jay（周杰伦网站）
