@@ -25,6 +25,7 @@ window.onload=function(){
 	var introSpecial=detailSpecial.getElementsByClassName("intro-special")[0];
 	var hisSpecial=document.getElementById("his-special");
 	var hisSpecialLi=hisSpecial.getElementsByTagName("li");
+	var music=document.getElementById("music");
 	outer.style.width=clientW+"px";
 	inner.style.height=clientH*3-1+"px";
 	outer.style.height=clientH+"px";
@@ -78,22 +79,26 @@ window.onload=function(){
 	function handle(delta){
 		if(delta<0){			//向下滚动
 			clearInterval(scrollTimer);
-			scrollTimer=setInterval(function(){
-				
-				inner.style.top=inner.offsetTop-1+"px";
-				if(inner.offsetTop%clientH==0){
-					clearInterval(scrollTimer);
-				}
-			},3)
+			console.log(inner.offsetHeight);
+			if(Math.abs(inner.offsetTop)<inner.offsetHeight-clientH){
+				scrollTimer=setInterval(function(){
+					inner.style.top=inner.offsetTop-1+"px";
+					if(inner.offsetTop%clientH==0){
+						clearInterval(scrollTimer);
+					}
+				},3)
+			}
 		}
 		else{					//向上滚动
 			clearInterval(scrollTimer);
-			scrollTimer=setInterval(function(){
-				inner.style.top=inner.offsetTop+1+"px";
-				if(inner.offsetTop%clientH==0){
-					clearInterval(scrollTimer);
-				}
-			},3)
+			if(inner.offsetTop<0){
+				scrollTimer=setInterval(function(){
+					inner.style.top=inner.offsetTop+1+"px";
+					if(inner.offsetTop%clientH==0){
+						clearInterval(scrollTimer);
+					}
+				},3)
+			}
 		}
 	}
 
@@ -163,21 +168,23 @@ window.onload=function(){
 	//歌词滚动事件
 	var lyricScrollTimer=null;
 	lyric.onclick=function(){
-		clearInterval(lyricScrollTimer);
-		lyricScrollTimer=setInterval(function(){
-			lyricUl.style.top=lyricUl.offsetTop-1+"px";
-			if(lyricUl.offsetTop==lyricUl.offsetHeight){
-				clearInterval(lyricScrollTImer);
-			}
-			for(var i=0;i<lyricLi.length;i++){
-				if((lyricLi[i].offsetTop+lyricUl.offsetTop<250) &&(lyricLi[i].offsetTop+lyricUl.offsetTop>210)){
-					lyricLi[i].className="scrollLi";
-				}
-				else{
-					lyricLi[i].className="";
-				}
-			}
-		 },30)
+		// clearInterval(lyricScrollTimer);
+		// lyricScrollTimer=setInterval(function(){
+		// 	lyricUl.style.top=lyricUl.offsetTop-1+"px";
+		// 	if(lyricUl.offsetTop==lyricUl.offsetHeight){
+		// 		clearInterval(lyricScrollTImer);
+		// 	}
+		// 	for(var i=0;i<lyricLi.length;i++){
+		// 		if((lyricLi[i].offsetTop+lyricUl.offsetTop<250) &&(lyricLi[i].offsetTop+lyricUl.offsetTop>210)){
+		// 			lyricLi[i].className="scrollLi";
+		// 		}
+		// 		else{
+		// 			lyricLi[i].className="";
+		// 		}
+		// 	}
+		//  },30)
+		music.pause();
+		music.currentTime=0;
 	}
 
 
@@ -218,24 +225,37 @@ window.onload=function(){
 		for(var i=0;i<obj.length;i++){
 			(function(i){					//闭包
 				obj[i].onclick=function(){
-				for(var j=0;j<obj.length;j++){
-					obj[j].className="";
-					// imgSpecial[0].style.display="none";
-					// introSpecial[0].style.display="none";
-				};
-				this.className="activeClass";
-				if(obj==hisSpecialLi){
-					$.ajax({
-						url:'special.json',
-						dateType:"json",
-						async:true,
-						type:"GET",
-						success:function(data){
-							imgSpecial.setAttribute("src",data[i].img);
-							introSpecial.innerHTML="<p>"+data[i].intro.replace(/\n/g,"</p><p>")+"</p>";		//将\n转换成p标签
-						}
-					});
-				}
+					for(var j=0;j<obj.length;j++){
+						obj[j].className="";
+						// imgSpecial[0].style.display="none";
+						// introSpecial[0].style.display="none";
+					};
+					this.className="activeClass";
+					if(obj==hisSpecialLi){
+						$.ajax({
+							url:'special.json',
+							dateType:"json",
+							async:true,
+							type:"GET",
+							success:function(data){
+								imgSpecial.setAttribute("src",data[i].img);
+								imgSpecial.style.display="inline";
+								introSpecial.style.display="none";
+								detailSpecial.style.width="40%";
+								detailSpecial.style.marginLeft="20%";
+								detailSpecial.style.backgroundColor="#A4A0A0";
+								detailSpecial.style.padding="10px";
+								introSpecial.innerHTML="<p>"+data[i].intro.replace(/\n/g,"</p><p>")+"</p>";		//将\n转换成p标签
+							}
+						});
+					}
+					if(obj==scrollSingleA && i==0){		//播放音乐
+						music.play();
+					}
+					else if(i!=0){
+						music.pause();
+						music.currentTime=0;
+					}
 				}
 			})(i)
 		}
