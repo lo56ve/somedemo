@@ -1,0 +1,9 @@
+接下来。做歌曲和同步歌词
+
+http://www.feelcss.com/html5-music-player-synchronous-display-lyrics.html
+
+http://www.cnblogs.com/Wayou/p/sync_lyric_with_html5_audio.html
+
+
+
+接下来。读取歌词部分，还有读取歌曲名
