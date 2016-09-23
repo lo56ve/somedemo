@@ -164,10 +164,14 @@
   -o-box-shadow: 10px 10px 5px #3a2121;
   box-shadow: 10px 10px 5px #3a2121;
 }
+#music{
+  position:absolute;
+  right:6%;
+  bottom:3%;
+}
 #jay_single .lyric div {
   position: relative;
-  width: 100%;
-  min-width: 340px;
+  width: 340px;
   min-height: 450px;
   overflow: hidden;
 }
@@ -180,7 +184,8 @@
 #jay_single .lyric div ul li {
   list-style: none;
   text-align: center;
-  max-width: 340px;
+  width: 340px;
+  height:20px;
   padding: 10px;
 }
 .title {
