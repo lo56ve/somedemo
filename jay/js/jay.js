@@ -26,6 +26,7 @@ window.onload=function(){
 	var hisSpecial=document.getElementById("his-special");
 	var hisSpecialLi=hisSpecial.getElementsByTagName("li");
 	var music=document.getElementById("music");
+	var play=false;
 	outer.style.width=clientW+"px";
 	inner.style.height=clientH*3-1+"px";
 	outer.style.height=clientH+"px";
@@ -226,58 +227,61 @@ window.onload=function(){
 							}
 						});
 					}
-					if(obj==scrollSingleA){		//播放音乐
-						music.pause();
-						music.currentTime=0;
-						lyricUl.innerHTML="";
-						music.innerHTML="";
-						var lrcURL;
-						console.log(i);
-						switch(i){
-							case 0:{
-								music.innerHTML="<source src='mp3/告白气球/告白气球.mp3' type='audio/mp3'><source src='mp3/告白气球/告白气球.ogg' type='audio/ogg'>";
-								lrcURL="mp3/告白气球/告白气球";
-							}
-							break;
-							case 1:{
-								music.innerHTML="<source src='mp3/晴天/晴天.mp3' type='audio/mp3'><source src='mp3/晴天/晴天.ogg' type='audio/ogg'>";
-								lrcURL="mp3/晴天/晴天";
-							}
-							break;
-							case 2:{
-								music.innerHTML="<source src='mp3/爱情废柴/爱情废柴.mp3' type='audio/mp3'><source src='mp3/爱情废柴/爱情废柴.ogg' type='audio/ogg'>";
-								lrcURL="mp3/爱情废柴/爱情废柴";
-							}
-							break;
-							case 3:{
-								music.innerHTML="<source src='mp3/彩虹/彩虹.mp3' type='audio/mp3'><source src='mp3/彩虹/彩虹.ogg' type='audio/ogg'>";
-								lrcURL="mp3/彩虹/彩虹";
-							}
-							break;
-							case 4:{
-								music.innerHTML="<source src='mp3/七里香/七里香.mp3' type='audio/mp3'><source src='mp3/七里香/七里香.ogg' type='audio/ogg'>";
-								lrcURL="mp3/七里香/七里香";
-							}
-							break;
-							case 5:{
-								music.innerHTML="<source src='mp3/一路向北/一路向北.mp3' type='audio/mp3'><source src='mp3/一路向北/一路向北.ogg' type='audio/ogg'>";
-								lrcURL="mp3/一路向北/一路向北";
-							}
-							break;
-							case 6:{
-								music.innerHTML="<source src='mp3/稻香/稻香.mp3' type='audio/mp3'><source src='mp3/稻香/稻香.ogg' type='audio/ogg'>";
-								lrcURL="mp3/稻香/稻香";
-							}
-							break;
-							case 7:{
-								music.innerHTML="<source src='mp3/不能说的秘密/不能说的秘密.mp3' type='audio/mp3'><source src='mp3/不能说的秘密/不能说的秘密.ogg' type='audio/ogg'>";
-								lrcURL="mp3/不能说的秘密/不能说的秘密";
-							}
-							break;
+					if(obj==scrollSingleA && i==0){		//播放音乐
+
+						// music.pause();
+						// music.currentTime=0;
+						// lyricUl.innerHTML="";
+						music.innerHTML="<source src='mp3/告白气球/告白气球.mp3' type='audio/mp3'><source src='mp3/告白气球/告白气球.ogg' type='audio/ogg'>";
+						var lrcURL="mp3/告白气球/告白气球";
+						if(play){
+							return;
 						}
+						// switch(i){
+						// 	case 0:{
+						// 		music.innerHTML="<source src='mp3/告白气球/告白气球.mp3' type='audio/mp3'><source src='mp3/告白气球/告白气球.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/告白气球/告白气球";
+						// 	}
+						// 	break;
+						// 	case 1:{
+						// 		music.innerHTML="<source src='mp3/晴天/晴天.mp3' type='audio/mp3'><source src='mp3/晴天/晴天.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/晴天/晴天";
+						// 	}
+						// 	break;
+						// 	case 2:{
+						// 		music.innerHTML="<source src='mp3/爱情废柴/爱情废柴.mp3' type='audio/mp3'><source src='mp3/爱情废柴/爱情废柴.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/爱情废柴/爱情废柴";
+						// 	}
+						// 	break;
+						// 	case 3:{
+						// 		music.innerHTML="<source src='mp3/彩虹/彩虹.mp3' type='audio/mp3'><source src='mp3/彩虹/彩虹.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/彩虹/彩虹";
+						// 	}
+						// 	break;
+						// 	case 4:{
+						// 		music.innerHTML="<source src='mp3/七里香/七里香.mp3' type='audio/mp3'><source src='mp3/七里香/七里香.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/七里香/七里香";
+						// 	}
+						// 	break;
+						// 	case 5:{
+						// 		music.innerHTML="<source src='mp3/一路向北/一路向北.mp3' type='audio/mp3'><source src='mp3/一路向北/一路向北.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/一路向北/一路向北";
+						// 	}
+						// 	break;
+						// 	case 6:{
+						// 		music.innerHTML="<source src='mp3/稻香/稻香.mp3' type='audio/mp3'><source src='mp3/稻香/稻香.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/稻香/稻香";
+						// 	}
+						// 	break;
+						// 	case 7:{
+						// 		music.innerHTML="<source src='mp3/不能说的秘密/不能说的秘密.mp3' type='audio/mp3'><source src='mp3/不能说的秘密/不能说的秘密.ogg' type='audio/ogg'>";
+						// 		lrcURL="mp3/不能说的秘密/不能说的秘密";
+						// 	}
+						// 	break;
+						// }
 						music.play();
 						$.ajax({
-							url:lrcURL+'.lrc',
+							url:lrcURL+'.txt',
 							dataType:'text',
 							async:'true',
 							type:'GET',
@@ -290,6 +294,7 @@ window.onload=function(){
 									lyricUl.innerHTML+="<li>"+a[i][1]+"</li>";
 								}
 								music.ontimeupdate=function(e){
+									play=true;
 									if(!lyricUl.innerHTML){
 										return;
 									}
