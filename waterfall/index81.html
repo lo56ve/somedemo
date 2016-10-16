@@ -75,6 +75,9 @@
 		<div class="content">
 			<div class="box"><img src="img/waterfall/15.jpg" alt=""></div>
 		</div>
+		<div class="content">
+			<div class="box"><img src="img/waterfall/16.jpg" alt=""></div>
+		</div>
 	</div>
 	<script src="jq/jquery-1.9.1.min.js"></script>
 	<script>
@@ -98,7 +101,6 @@
 					cols_length[y_index[1]]=waterfall(cols_length,content,i,y_index);
 				}
 			}
-			var json_num=0;
 			window.onscroll=function(){
 			// wrap.onclick=function(){
 				var max=index_max(cols_length);
@@ -107,27 +109,44 @@
 					var new_content=[];
 					var new_box=[];
 					var new_img=[];
-					var jsonText=$.ajax({
+					$.ajax({
 						url:"waterfall.json",
 						dataType:"json",
 						async:true,
-						type:"GET"
+						type:"GET",
+						success:function(data){
+							for(var a=0;a<10;a++){
+								new_content[a]=document.createElement("div");
+								new_box[a]=document.createElement("div");
+								new_img[a]=document.createElement("img");
+								new_img[a].setAttribute("src",data[a].src);
+								new_box[a].appendChild(new_img[a]);
+								new_box[a].setAttribute("class","box");
+								new_content[a].appendChild(new_box[a]);
+								// new_content[a].innerHTML="<div class='box'><img src='img/waterfall/25.jpg' alt=''></div>";     
+								//这行代码也可以用上面的代替，但这只是一个content，不是数组
+								new_content[a].setAttribute("class","content");			
+								wrap.appendChild(new_content[a]);
+								y_index=index_min(cols_length);
+								cols_length[y_index[1]]=waterfall(cols_length,new_content,a,y_index);
+							}
+						}
 					})
-					for(var a=0;a<10;a++){
-						new_content[a]=document.createElement("div");
-						new_box[a]=document.createElement("div");
-						new_img[a]=document.createElement("img");
-						new_img[a].setAttribute("src","img/waterfall/15.jpg");
-						new_box[a].appendChild(new_img[a]);
-						new_box[a].setAttribute("class","box");
-						new_content[a].appendChild(new_box[a]);
-						// new_content[a].innerHTML="<div class='box'><img src='img/waterfall/25.jpg' alt=''></div>";     
-						//这行代码也可以用上面的代替，但这只是一个content，不是数组
-						new_content[a].setAttribute("class","content");			
-						wrap.appendChild(new_content[a]);
-						y_index=index_min(cols_length);
-						cols_length[y_index[1]]=waterfall(cols_length,new_content,a,y_index);
-					}
+					// for(var a=0;a<10;a++){
+					// 	new_content[a]=document.createElement("div");
+					// 	new_box[a]=document.createElement("div");
+					// 	new_img[a]=document.createElement("img");
+					// 	new_img[a].setAttribute("src","img/waterfall/15.jpg");
+					// 	new_box[a].appendChild(new_img[a]);
+					// 	new_box[a].setAttribute("class","box");
+					// 	new_content[a].appendChild(new_box[a]);
+					// 	// new_content[a].innerHTML="<div class='box'><img src='img/waterfall/25.jpg' alt=''></div>";     
+					// 	//这行代码也可以用上面的代替，但这只是一个content，不是数组
+					// 	new_content[a].setAttribute("class","content");			
+					// 	wrap.appendChild(new_content[a]);
+					// 	y_index=index_min(cols_length);
+					// 	cols_length[y_index[1]]=waterfall(cols_length,new_content,a,y_index);
+					// }
 				}
 
 			}
