@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div><input type="text" value="1" id="input1"></div>
+	<script>
+		var input1=document.querySelector('#input1');
+		Object.prototype.add=function(){
+			var id=this.getAttribute('value');
+			var newid=parseInt(id)+1;
+			var newdom=document.createElement('input');
+			newdom.setAttribute('id',newid);
+			newdom.setAttribute('value',newid);
+			this.parentNode.insertBefore(newdom,this);
+			return newdom;		//返回的是新的下一个节点
+		}
+		input1.onclick=function(){
+			this.add().add().add();		//模仿jq的链式
+		}
+	</script>
+</body>
+</html>
