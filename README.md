@@ -13,3 +13,4 @@
 - time inverted（时钟倒影）
 - waterfall（js实现瀑布流，ajax加载）
 - jay（周杰伦网站）
+- Js_rem（移动端屏幕尺寸适配问题）
