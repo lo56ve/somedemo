@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style>
+    	.left-tar {
+    		height: 100%;
+    		overflow-y: auto;
+    	}
+    	.right-content {
+    		height: 100%;
+    		overflow-y: auto;
+    	}
+    	.mui-segmented-control .mui-control-item {
+    		line-height: 50px;
+    		width: 100%;
+    	}
+    	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			background-color: #fff;
+		}
+		#content-item {
+			border-left: 1px solid #c8c7cc;
+		}
+		#refreshContainer {
+			background-color: #fff;
+			border-left: 1px solid #c8c7cc;
+		}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">侧面选项卡-div模式</h1>
+	</header>
+	
+	<div class="mui-content mui-row mui-fullscreen">
+		<div class="left-tar mui-col-sm-3 mui-col-xs-3">
+			<div id="tab-item" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical"></div>
+		</div>
+		
+		<div class="right-content mui-col-xs-9 mui-col-sm-9">
+			<ul id="content-item" class="mui-table-view"></ul>
+			<div id="refreshContainer"></div>
+		</div>
+	</div>
+	
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var contentItem = document.getElementById('content-item'),
+		showindex = 0,
+		n = 20,
+		add = 5,
+		contentul = '';
+		
+      	mui.init({
+		  pullRefresh : {
+		    container: '#refreshContainer',//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+		    up : {
+		      height: 50,//可选.默认50.触发上拉加载拖动距离
+		      auto: true,//可选,默认false.自动上拉加载一次
+		      contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+		      contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+		      callback : refresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+		    }
+		  }
+		});
+		
+      	mui.ready(function () {
+      		var tarul = '',
+	      	tabItem = document.getElementById("tab-item");
+	      	
+	      	for (var i = 0; i < 10; i++) {
+	      		var a = '<a class="mui-control-item" id="' + i + '">选项' + i + '</a>';
+	      		tarul += a;
+	      	}
+	      	tabItem.innerHTML = tarul;
+	      	tabItem.querySelector('.mui-control-item').classList.add('mui-active');
+	      	childTar(showindex);
+	      	
+	      	mui('#tab-item').on('tap', 'a', function() {
+	      		showindex = this.id;
+	      		contentul = '';
+	      		childTar(showindex);
+	      	})
+      	})
+      	
+      	function childTar(showindex) {
+      		for (var i = 0; i < n; i++) {
+	      		var li = '<li class="mui-table-view-cell">第' + showindex + '个选项卡的' + i + '子选项</li>';
+	      		contentul += li;
+	      	}
+      		contentItem.innerHTML = contentul;
+      	}
+      	
+      	function refresh() {
+      		var _this = this;
+      		for (var i = n; i < n + add; i++) {
+	      		var li = '<li class="mui-table-view-cell">第' + showindex + '个选项卡的' + i + '子选项</li>';
+	      		contentul += li;
+	      	}
+      		setTimeout(function() {
+      			contentItem.innerHTML = contentul;
+      			_this.endPullupToRefresh(false);
+      		}, 1000)
+      		
+      	}
+    </script>
+</body>
+</html>
