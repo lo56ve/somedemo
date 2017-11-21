@@ -15,6 +15,7 @@
 - move frame（用js运动框架，模仿淘宝图标运动特效）
 - nav（导航定位）
 - nodejs（nodejs小练习）
+- qrcode（node生成二维码，支持文字或网站）
 - sort（js实现升序和降序排序）
 - tab-pullrefresh（mui选项卡+上拉刷新）
 - tagForward（实现电话号码自动跳转输入框，并附上DOM2级事件处理）
