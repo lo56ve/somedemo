@@ -71,7 +71,7 @@ promise对象的错误，会一直向后传递，知道被捕获，即错误总�
 - 如果是在then中抛错，而没有对错误进行处理（即catch），那么会一直保持reject状态，知道catch了错误
 - 在异步回调中抛错，不会被catch到
 
-    function taskA() {
+	function taskA() {
 	    console.log(x);
 	    console.log("Task A");
 	}
