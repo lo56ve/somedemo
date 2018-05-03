@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+    <title>debounce</title>
+    <style>
+        #container{
+            width: 100%; height: 200px; line-height: 200px; text-align: center; color: #fff; background-color: #444; font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+    	var container = document.getElementById('container')
+    	var count = 0
+    	/* fun：执行的函数，
+    	** wait：等待的时间
+    	** immedite：是否立即触发执行函数
+    	*/
+    	function debounce(fun, wait, immedite) {
+    		var timeout
+
+    		return function(){
+    			var context = this
+    			var args = arguments
+    			if(timeout){
+    				clearTimeout(timeout)
+    			}
+    			if(immedite) {
+    				if(!timeout) {
+	    				fun.apply(context, args)
+    				}
+    				timeout = setTimeout(function(){
+    					timeout = null
+    				}, wait)
+    			} else {
+    				clearTimeout(timeout)
+	    			timeout = setTimeout(function(){
+	    				fun.apply(context, args)
+	    			}, wait)
+    			}
+    		}
+    	}
+    	container.onmousemove = debounce(function(){
+    		this.innerHTML = count++
+    	}, 1000, false)
+    </script>
+</body>
+
+</html>
