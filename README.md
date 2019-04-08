@@ -8,6 +8,7 @@
 - crawler（nodejs小爬虫，爬取页面中的视频列表）
 - demo1（模仿的小网站）
 - drap（js，jq实现div可拖动）
+- es6（es6学习中的一些疑点难点）
 - gdut（模仿广工主页）
 - jay（周杰伦网站）
 - joke（开个玩笑）
@@ -16,9 +17,11 @@
 - nav（导航定位）
 - nodejs（nodejs小练习）
 - qrcode（node生成二维码，支持文字或网站）
+- react-practice（redux基础，实现计数器）
 - sort（js实现升序和降序排序）
 - tab-pullrefresh（mui选项卡+上拉刷新）
 - tagForward（实现电话号码自动跳转输入框，并附上DOM2级事件处理）
+- throttle debounce（事件防抖和节流）
 - time inverted（时钟倒影）
 - touch（移动端手势操作）
 - waterfall（js实现瀑布流，ajax加载）
