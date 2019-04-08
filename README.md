@@ -1,4 +1,4 @@
-# 前端学习的一些demo
+# 前端学习的一些demo[停止更新]
 
 - bootstrap demo（bootstrap模仿后台管理页面）
 - carousel（轮播图）
@@ -22,3 +22,5 @@
 - time inverted（时钟倒影）
 - touch（移动端手势操作）
 - waterfall（js实现瀑布流，ajax加载）
+
+> 初学的练手编程，很多方法已不适用，慎用。
